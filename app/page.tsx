@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Search, MapPin, QrCode, Gift, Check, ArrowRight, Users } from 'lucide-react'
+import { MapPin, QrCode, Gift, Check, ArrowRight, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const cuisines = [
@@ -19,24 +19,19 @@ const cuisines = [
 
 const steps = [
   {
-    icon: Search,
-    title: 'Discover',
-    description: 'Find Mansa Certified authentic restaurants near you',
+    icon: QrCode,
+    title: 'Eat & Earn',
+    description: 'Scan after every meal to earn Mansas instantly. The more you eat, the more you earn.',
   },
   {
-    icon: QrCode,
-    title: 'Eat & Scan',
-    description: 'Scan the QR code after paying to earn Mansas',
+    icon: Users,
+    title: 'Refer & Authenticate',
+    description: "Recommend friends or verify a restaurant's heritage. Earn bonus Mansas both ways.",
   },
   {
     icon: Gift,
     title: 'Redeem',
-    description: 'Spend your Mansas at any restaurant in the ecosystem',
-  },
-  {
-    icon: Users,
-    title: 'Refer & Earn',
-    description: "Recommend friends or authenticate a restaurant's heritage and earn bonus Mansas automatically.",
+    description: 'Spend your Mansas at any restaurant in the Mansa ecosystem. Your loyalty travels with you.',
   },
 ]
 
@@ -129,10 +124,10 @@ export default function LandingPage() {
       <section className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <h2 className="font-serif text-4xl md:text-5xl text-center mb-16">
-            Four ways to earn Mansas.
+            Three ways to earn Mansas.
           </h2>
 
-          <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {steps.map((step, index) => (
               <div
                 key={step.title}
