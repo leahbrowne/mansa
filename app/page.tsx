@@ -6,15 +6,15 @@ import { Search, MapPin, QrCode, Gift, Check, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const cuisines = [
-  { name: 'West African', emoji: '🍲', color: 'bg-amber-600' },
-  { name: 'Caribbean', emoji: '🥘', color: 'bg-orange-600' },
-  { name: 'South Asian', emoji: '🍛', color: 'bg-yellow-600' },
-  { name: 'East Asian', emoji: '🥢', color: 'bg-red-600' },
-  { name: 'Ethiopian', emoji: '🫓', color: 'bg-amber-700' },
-  { name: 'Levantine', emoji: '🧆', color: 'bg-emerald-700' },
-  { name: 'Indo-Caribbean', emoji: '🍜', color: 'bg-rose-600' },
-  { name: 'Persian', emoji: '🍚', color: 'bg-teal-600' },
-  { name: 'North African', emoji: '🥗', color: 'bg-orange-700' },
+  { name: 'West African', emoji: '🍲', color: 'bg-amber-600/65', image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=600&q=80' },
+  { name: 'Caribbean', emoji: '🥘', color: 'bg-orange-600/65', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80' },
+  { name: 'South Asian', emoji: '🍛', color: 'bg-yellow-600/65', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80' },
+  { name: 'East Asian', emoji: '🥢', color: 'bg-red-600/65', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80' },
+  { name: 'Ethiopian', emoji: '🫓', color: 'bg-amber-700/65', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80' },
+  { name: 'Levantine', emoji: '🧆', color: 'bg-emerald-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
+  { name: 'Indo-Caribbean', emoji: '🍜', color: 'bg-rose-600/65', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80' },
+  { name: 'Persian', emoji: '🍚', color: 'bg-teal-600/65', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80' },
+  { name: 'North African', emoji: '🥗', color: 'bg-orange-700/65', image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=600&q=80' },
 ]
 
 const steps = [
@@ -168,21 +168,33 @@ export default function LandingPage() {
             {cuisines.map((cuisine) => (
               <div
                 key={cuisine.name}
-                className={`${cuisine.color} relative h-40 md:h-48 p-5 rounded-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] overflow-hidden`}
+                className="relative h-40 md:h-48 rounded-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] overflow-hidden"
                 style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.15)' }}
               >
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                {/* Background image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${cuisine.image})` }}
+                />
                 
-                {/* Emoji top left */}
-                <span className="text-4xl md:text-5xl" role="img" aria-label={cuisine.name}>
-                  {cuisine.emoji}
-                </span>
+                {/* Color overlay */}
+                <div className={`absolute inset-0 ${cuisine.color}`} />
                 
-                {/* Name bottom left */}
-                <span className="absolute bottom-4 left-5 font-serif italic text-lg md:text-xl text-white drop-shadow-md">
-                  {cuisine.name}
-                </span>
+                {/* Dark gradient for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Content */}
+                <div className="relative h-full p-5 flex flex-col justify-between">
+                  {/* Emoji top left */}
+                  <span className="text-4xl md:text-5xl drop-shadow-lg" role="img" aria-label={cuisine.name}>
+                    {cuisine.emoji}
+                  </span>
+                  
+                  {/* Name bottom left */}
+                  <span className="font-serif italic text-lg md:text-xl text-white drop-shadow-md">
+                    {cuisine.name}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
