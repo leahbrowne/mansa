@@ -168,12 +168,19 @@ export default function LandingPage() {
             {cuisines.map((cuisine) => (
               <div
                 key={cuisine.name}
-                className={`${cuisine.color} p-6 flex items-center gap-4 group cursor-pointer hover:scale-[1.02] transition-transform`}
+                className={`${cuisine.color} relative h-40 md:h-48 p-5 rounded-lg cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] overflow-hidden`}
+                style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.15)' }}
               >
-                <span className="text-3xl" role="img" aria-label={cuisine.name}>
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Emoji top left */}
+                <span className="text-4xl md:text-5xl" role="img" aria-label={cuisine.name}>
                   {cuisine.emoji}
                 </span>
-                <span className="font-sans font-medium text-white">
+                
+                {/* Name bottom left */}
+                <span className="absolute bottom-4 left-5 font-serif italic text-lg md:text-xl text-white drop-shadow-md">
                   {cuisine.name}
                 </span>
               </div>
@@ -253,7 +260,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-background border-t border-border">
+      <footer className="py-16 bg-background border-t-2 border-primary">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
@@ -275,7 +282,7 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            Launching 2026
+            © 2026 Mansa. East London.
           </div>
         </div>
       </footer>
