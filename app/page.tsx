@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Search, MapPin, QrCode, Gift, Check, ArrowRight } from 'lucide-react'
+import { Search, MapPin, QrCode, Gift, Check, ArrowRight, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const cuisines = [
@@ -32,6 +32,11 @@ const steps = [
     icon: Gift,
     title: 'Redeem',
     description: 'Spend your Mansas at any restaurant in the ecosystem',
+  },
+  {
+    icon: Users,
+    title: 'Refer & Earn',
+    description: "Recommend friends or authenticate a restaurant's heritage and earn bonus Mansas automatically.",
   },
 ]
 
@@ -124,10 +129,10 @@ export default function LandingPage() {
       <section className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <h2 className="font-serif text-4xl md:text-5xl text-center mb-16">
-            How it works
+            Four ways to earn Mansas.
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {steps.map((step, index) => (
               <div
                 key={step.title}
