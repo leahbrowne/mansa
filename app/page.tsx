@@ -14,7 +14,7 @@ const cuisines = [
   { name: 'Levantine', color: 'bg-emerald-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
   { name: 'Indo-Caribbean', color: 'bg-rose-600/65', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80' },
   { name: 'Persian', color: 'bg-teal-600/65', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80' },
-  { name: 'North African', color: 'bg-orange-700/65', image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=600&q=80' },
+  { name: 'More Cuisines', color: 'bg-neutral-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
 ]
 
 const steps = [
