@@ -6,15 +6,15 @@ import { MapPin, QrCode, Gift, Check, ArrowRight, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const cuisines = [
-  { name: 'West African', emoji: '🍲', color: 'bg-amber-600/65', image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=600&q=80' },
-  { name: 'Caribbean', emoji: '🥘', color: 'bg-orange-600/65', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80' },
-  { name: 'South Asian', emoji: '🍛', color: 'bg-yellow-600/65', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80' },
-  { name: 'East Asian', emoji: '🥢', color: 'bg-red-600/65', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80' },
-  { name: 'Ethiopian', emoji: '🫓', color: 'bg-amber-700/65', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80' },
-  { name: 'Levantine', emoji: '🧆', color: 'bg-emerald-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
-  { name: 'Indo-Caribbean', emoji: '🍜', color: 'bg-rose-600/65', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80' },
-  { name: 'Persian', emoji: '🍚', color: 'bg-teal-600/65', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80' },
-  { name: 'North African', emoji: '🥗', color: 'bg-orange-700/65', image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=600&q=80' },
+  { name: 'West African', color: 'bg-amber-600/65', image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=600&q=80' },
+  { name: 'Caribbean', color: 'bg-orange-600/65', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80' },
+  { name: 'South Asian', color: 'bg-yellow-600/65', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80' },
+  { name: 'East Asian', color: 'bg-red-600/65', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80' },
+  { name: 'Ethiopian', color: 'bg-amber-700/65', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80' },
+  { name: 'Levantine', color: 'bg-emerald-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
+  { name: 'Indo-Caribbean', color: 'bg-rose-600/65', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80' },
+  { name: 'Persian', color: 'bg-teal-600/65', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80' },
+  { name: 'North African', color: 'bg-orange-700/65', image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=600&q=80' },
 ]
 
 const steps = [
@@ -184,12 +184,7 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 
                 {/* Content */}
-                <div className="relative h-full p-5 flex flex-col justify-between">
-                  {/* Emoji top left */}
-                  <span className="text-4xl md:text-5xl drop-shadow-lg" role="img" aria-label={cuisine.name}>
-                    {cuisine.emoji}
-                  </span>
-                  
+                <div className="relative h-full p-5 flex flex-col justify-end">
                   {/* Name bottom left */}
                   <span className="font-serif italic text-lg md:text-xl text-white drop-shadow-md">
                     {cuisine.name}
