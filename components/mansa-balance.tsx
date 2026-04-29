@@ -24,7 +24,7 @@ export function MansaBalance({ balance, showRedeem = true }: MansaBalanceProps) 
 
           <div>
             <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium mb-1">
-              Your Mansas
+              Your Points
             </p>
             <p className="font-mono text-3xl font-semibold text-foreground">
               {balance.toLocaleString()}

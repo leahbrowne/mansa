@@ -78,7 +78,7 @@ export function RestaurantCard({ restaurant, variant = 'default' }: RestaurantCa
 
         {/* Earn Rate */}
         <p className="mt-3 text-xs text-primary font-mono">
-          {restaurant.earnRate} Mansas per £1
+          {restaurant.earnRate} Points per £1
         </p>
       </div>
     </Link>

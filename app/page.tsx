@@ -21,17 +21,17 @@ const steps = [
   {
     icon: QrCode,
     title: 'Eat & Earn',
-    description: 'Scan after every meal to earn Mansas instantly. The more you eat, the more you earn.',
+    description: 'Scan after every meal to earn Points instantly. The more you eat, the more you earn.',
   },
   {
     icon: Users,
     title: 'Refer & Authenticate',
-    description: "Recommend friends or verify a restaurant's heritage. Earn bonus Mansas both ways.",
+    description: "Recommend friends or verify a restaurant's heritage. Earn bonus Points both ways.",
   },
   {
     icon: Gift,
     title: 'Redeem',
-    description: 'Spend your Mansas at any restaurant in the Mansa ecosystem. Your loyalty travels with you.',
+    description: 'Spend your Points at any restaurant in the Mansa ecosystem. Your loyalty travels with you.',
   },
 ]
 
@@ -68,7 +68,7 @@ export default function LandingPage() {
           {/* Headline */}
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold mb-6 leading-tight text-balance">
             <span className="block">Eat real food.</span>
-            <span className="block text-primary">Earn Mansas.</span>
+            <span className="block text-primary">Earn Points.</span>
           </h1>
 
           {/* Subheadline */}
@@ -124,7 +124,7 @@ export default function LandingPage() {
       <section className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <h2 className="font-serif text-4xl md:text-5xl text-center mb-16">
-            Three ways to earn Mansas.
+            Three ways to earn Points.
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">

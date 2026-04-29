@@ -77,7 +77,7 @@ export default function ProfilePage() {
           <div className="bg-card border border-border p-4 text-center">
             <Crown className="w-5 h-5 text-primary mx-auto mb-2" />
             <p className="font-mono text-xl font-semibold">{mockUser.balance.toLocaleString()}</p>
-            <p className="text-xs text-muted-foreground">Mansas</p>
+            <p className="text-xs text-muted-foreground">Points</p>
           </div>
           <div className="bg-card border border-border p-4 text-center">
             <Share2 className="w-5 h-5 text-secondary mx-auto mb-2" />
@@ -95,7 +95,7 @@ export default function ProfilePage() {
         <section className="bg-card border border-border p-6">
           <h3 className="font-serif text-xl mb-4">Refer & Earn</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            Earn 50 Mansas for every friend who makes their first purchase. Earn 100 Mansas for every restaurant you refer.
+            Earn 50 Points for every friend who makes their first purchase. Earn 100 Points for every restaurant you refer.
           </p>
 
           <div className="flex items-center gap-3 mb-4">

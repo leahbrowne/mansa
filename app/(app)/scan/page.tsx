@@ -10,7 +10,7 @@ type ScanState = 'idle' | 'scanning' | 'enter-amount' | 'success'
 export default function ScanPage() {
   const [scanState, setScanState] = useState<ScanState>('idle')
   const [amount, setAmount] = useState('')
-  const [earnedMansas, setEarnedMansas] = useState(0)
+  const [earnedPoints, setEarnedPoints] = useState(0)
 
   const handleStartScan = () => {
     setScanState('scanning')
@@ -23,8 +23,8 @@ export default function ScanPage() {
   const handleSubmitAmount = () => {
     const spent = parseFloat(amount)
     if (spent > 0) {
-      const mansas = Math.floor(spent * 10) // 10 Mansas per £1
-      setEarnedMansas(mansas)
+      const mansas = Math.floor(spent * 10) // 10 Points per £1
+      setEarnedPoints(mansas)
       setScanState('success')
     }
   }
@@ -32,7 +32,7 @@ export default function ScanPage() {
   const handleReset = () => {
     setScanState('idle')
     setAmount('')
-    setEarnedMansas(0)
+    setEarnedPoints(0)
   }
 
   return (
@@ -52,7 +52,7 @@ export default function ScanPage() {
             <div>
               <h2 className="font-serif text-2xl mb-2">Ready to earn?</h2>
               <p className="text-muted-foreground max-w-xs mx-auto">
-                Scan the restaurant&apos;s QR code after paying to earn Mansas
+                Scan the restaurant&apos;s QR code after paying to earn Points
               </p>
             </div>
             <Button
@@ -130,7 +130,7 @@ export default function ScanPage() {
               </div>
               {amount && parseFloat(amount) > 0 && (
                 <p className="text-primary font-mono">
-                  You&apos;ll earn {Math.floor(parseFloat(amount) * 10)} Mansas
+                  You&apos;ll earn {Math.floor(parseFloat(amount) * 10)} Points
                 </p>
               )}
             </div>
@@ -171,7 +171,7 @@ export default function ScanPage() {
 
             <div>
               <h2 className="font-serif text-3xl mb-2 text-primary">
-                +{earnedMansas.toLocaleString()} Mansas
+                +{earnedPoints.toLocaleString()} Points
               </h2>
               <p className="text-muted-foreground">
                 Earned at Alara Lagos Kitchen
@@ -181,7 +181,7 @@ export default function ScanPage() {
             <div className="bg-card border border-border p-4">
               <p className="text-sm text-muted-foreground mb-1">New Balance</p>
               <p className="font-mono text-2xl">
-                {(2840 + earnedMansas).toLocaleString()} Mansas
+                {(2840 + earnedPoints).toLocaleString()} Points
               </p>
             </div>
 

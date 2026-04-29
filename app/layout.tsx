@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Mansa — Where Culture Earns',
-  description: 'Discover authentic ethnic restaurants near you. Earn Mansas every time you eat. Redeem rewards across the entire ecosystem.',
+  description: 'Discover authentic ethnic restaurants near you. Earn Points every time you eat. Redeem rewards across the entire ecosystem.',
   generator: 'v0.app',
   manifest: '/manifest.json',
   appleWebApp: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Mansa — Where Culture Earns',
-    description: 'Discover authentic ethnic restaurants near you. Earn Mansas every time you eat.',
+    description: 'Discover authentic ethnic restaurants near you. Earn Points every time you eat.',
     type: 'website',
   },
 }

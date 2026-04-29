@@ -122,7 +122,7 @@ export default function RewardsPage() {
             {selectedRestaurant && (
               <div className="mt-6 space-y-4">
                 <label className="block text-sm text-muted-foreground">
-                  Mansas to redeem (min {minimumRedemption})
+                  Points to redeem (min {minimumRedemption})
                 </label>
                 <input
                   type="number"
@@ -168,7 +168,7 @@ export default function RewardsPage() {
 
               <div className="space-y-2">
                 <p className="text-2xl font-mono text-primary">
-                  -{parseInt(redeemAmount).toLocaleString()} Mansas
+                  -{parseInt(redeemAmount).toLocaleString()} Points
                 </p>
                 <p className="text-muted-foreground">
                   £{(parseInt(redeemAmount) / 100).toFixed(2)} off at{' '}
