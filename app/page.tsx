@@ -73,7 +73,7 @@ export default function LandingPage() {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10 text-pretty">
-            Discover authentic ethnic restaurants in East London. Earn rewards every time you eat.
+            Discover authentic ethnic restaurants near you. Earn rewards every time you eat.
           </p>
 
           {/* CTAs */}
@@ -107,7 +107,7 @@ export default function LandingPage() {
             </span>
             <span className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
-              East London first
+              Now available worldwide
             </span>
           </div>
         </div>
@@ -275,7 +275,7 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            Launching in East London 2026
+            Launching 2026
           </div>
         </div>
       </footer>
