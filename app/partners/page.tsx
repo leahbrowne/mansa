@@ -2,9 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Check, Upload, ArrowRight } from 'lucide-react'
+import { Check, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 const cuisineOptions = [
   'West African',
@@ -19,338 +18,323 @@ const cuisineOptions = [
   'Other',
 ]
 
-const planFeatures = {
-  free: [
-    'Listed in Mansa directory',
-    'Basic restaurant profile',
-    'Customer reviews',
-  ],
-  active: [
-    'Everything in Free, plus:',
-    'QR code scan to earn',
-    'Customer redemption',
-    'Analytics dashboard',
-    'Mansa Certified eligibility',
-    'Priority support',
-  ],
-}
+const heritageOptions = [
+  'Not applicable',
+  'Nigerian Owned',
+  'Ghanaian Owned',
+  'Jamaican Owned',
+  'Trinidadian Owned',
+  'Barbadian Owned',
+  'Ethiopian Owned',
+  'Eritrean Owned',
+  'Indian Owned',
+  'Pakistani Owned',
+  'Bangladeshi Owned',
+  'Lebanese Owned',
+  'Palestinian Owned',
+  'Persian Owned',
+  'Moroccan Owned',
+  'Other',
+]
 
 export default function PartnersPage() {
-  const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
     restaurantName: '',
     cuisineType: '',
-    address: '',
-    contactName: '',
-    contactEmail: '',
+    ownerName: '',
+    email: '',
     heritageStatement: '',
-    plan: 'active',
+    ownedBadge: '',
   })
+  const [submitted, setSubmitted] = useState(false)
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  const handleSubmit = () => {
-    // In production, this would submit to Supabase
-    setStep(4)
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+  }
+
+  if (submitted) {
+    return (
+      <main className="min-h-screen bg-background">
+        <div className="max-w-2xl mx-auto px-6 py-24 text-center">
+          <div className="w-20 h-20 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-8">
+            <Check className="w-10 h-10 text-primary" />
+          </div>
+          <h1 className="font-serif text-4xl mb-4">Welcome to Mansa</h1>
+          <p className="text-muted-foreground mb-8">
+            We&apos;ve received your application. Our team will review your details and send your QR code pack within 48 hours.
+          </p>
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none">
+            <Link href="/">Return home</Link>
+          </Button>
+        </div>
+      </main>
+    )
   }
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span>Back</span>
-          </Link>
-          <h1 className="font-serif text-xl text-primary">Partner with Mansa</h1>
-          <div className="w-16" />
-        </div>
-      </header>
-
-      <div className="max-w-2xl mx-auto px-6 py-8">
-        {/* Progress Steps */}
-        <div className="flex items-center justify-center gap-2 mb-12">
-          {[1, 2, 3].map((s) => (
-            <div
-              key={s}
-              className={cn(
-                'w-3 h-3 rounded-full transition-colors',
-                step >= s ? 'bg-primary' : 'bg-border'
-              )}
-            />
-          ))}
-        </div>
-
-        {/* Step 1: Basic Info */}
-        {step === 1 && (
-          <div className="space-y-8">
-            <div className="text-center">
-              <h2 className="font-serif text-3xl mb-2">Tell us about your restaurant</h2>
-              <p className="text-muted-foreground">
-                Join the Mansa ecosystem and get discovered by customers who value authentic cuisine.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">Restaurant Name</label>
-                <input
-                  type="text"
-                  value={formData.restaurantName}
-                  onChange={(e) => handleInputChange('restaurantName', e.target.value)}
-                  placeholder="e.g. Alara Lagos Kitchen"
-                  className="w-full bg-card border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Cuisine Type</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {cuisineOptions.map((cuisine) => (
-                    <button
-                      key={cuisine}
-                      onClick={() => handleInputChange('cuisineType', cuisine)}
-                      className={cn(
-                        'px-4 py-3 border text-left transition-colors',
-                        formData.cuisineType === cuisine
-                          ? 'bg-primary/10 border-primary text-primary'
-                          : 'bg-card border-border hover:border-primary/50'
-                      )}
-                    >
-                      {cuisine}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Address</label>
-                <input
-                  type="text"
-                  value={formData.address}
-                  onChange={(e) => handleInputChange('address', e.target.value)}
-                  placeholder="Full restaurant address"
-                  className="w-full bg-card border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
-              </div>
-            </div>
-
+      {/* Hero Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold mb-6 leading-tight text-balance">
+            List your restaurant.<br />Reward your regulars.
+          </h1>
+          <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10">
+            Mansa connects authentic food businesses with a community that values culture as much as cuisine.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
-              onClick={() => setStep(2)}
-              disabled={!formData.restaurantName || !formData.cuisineType || !formData.address}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-none py-6"
+              asChild
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-sans font-semibold px-8 py-6 text-lg rounded-none"
             >
-              Continue
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <a href="#join-form">Get started free</a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-primary text-primary hover:bg-primary/10 font-sans font-semibold px-8 py-6 text-lg rounded-none"
+            >
+              <a href="#how-it-works">See how it works</a>
             </Button>
           </div>
-        )}
+        </div>
+      </section>
 
-        {/* Step 2: Heritage Statement */}
-        {step === 2 && (
-          <div className="space-y-8">
+      {/* Benefits Section */}
+      <section className="py-20 px-6 bg-card">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <h2 className="font-serif text-3xl mb-2">Share your heritage</h2>
+              <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                <Check className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="font-serif text-2xl mb-3">Free to list</h3>
               <p className="text-muted-foreground">
-                This is what makes Mansa different. Tell us the story behind your food.
+                Your restaurant appears in Mansa discovery immediately. No upfront cost.
               </p>
             </div>
-
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">Contact Name</label>
-                <input
-                  type="text"
-                  value={formData.contactName}
-                  onChange={(e) => handleInputChange('contactName', e.target.value)}
-                  placeholder="Your name"
-                  className="w-full bg-card border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                <Check className="w-8 h-8 text-primary" />
               </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Contact Email</label>
-                <input
-                  type="email"
-                  value={formData.contactEmail}
-                  onChange={(e) => handleInputChange('contactEmail', e.target.value)}
-                  placeholder="email@restaurant.com"
-                  className="w-full bg-card border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Heritage Statement</label>
-                <textarea
-                  value={formData.heritageStatement}
-                  onChange={(e) => handleInputChange('heritageStatement', e.target.value)}
-                  placeholder="Tell us about your family, your recipes, your culture. What makes your food authentic?"
-                  rows={5}
-                  className="w-full bg-card border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
-                />
-                <p className="text-xs text-muted-foreground mt-2">
-                  This helps us verify your authenticity and tell your story to customers.
-                </p>
-              </div>
-
-              <div className="border border-dashed border-border p-6 text-center">
-                <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                <p className="text-sm text-muted-foreground">
-                  Upload verification documents (optional)
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Photos, certificates, or any proof of heritage
-                </p>
-              </div>
+              <h3 className="font-serif text-2xl mb-3">Keep 100% of your revenue</h3>
+              <p className="text-muted-foreground">
+                No transaction fees. Ever. We charge restaurants a flat monthly fee, nothing else.
+              </p>
             </div>
-
-            <div className="flex gap-4">
-              <Button
-                variant="outline"
-                onClick={() => setStep(1)}
-                className="flex-1 border-border py-6"
-              >
-                Back
-              </Button>
-              <Button
-                onClick={() => setStep(3)}
-                disabled={!formData.contactName || !formData.contactEmail}
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 rounded-none py-6"
-              >
-                Continue
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                <Check className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="font-serif text-2xl mb-3">Real customer data</h3>
+              <p className="text-muted-foreground">
+                See which dishes earn the most Points, when your regulars visit, and how referrals drive new covers.
+              </p>
             </div>
           </div>
-        )}
+        </div>
+      </section>
 
-        {/* Step 3: Choose Plan */}
-        {step === 3 && (
-          <div className="space-y-8">
-            <div className="text-center">
-              <h2 className="font-serif text-3xl mb-2">Choose your plan</h2>
-              <p className="text-muted-foreground">
-                Start free or activate full features immediately.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Free Plan */}
-              <button
-                onClick={() => handleInputChange('plan', 'free')}
-                className={cn(
-                  'p-6 border text-left transition-colors',
-                  formData.plan === 'free'
-                    ? 'bg-card border-primary'
-                    : 'bg-card border-border hover:border-primary/50'
-                )}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-serif text-xl">Free</h3>
-                  <div className={cn(
-                    'w-5 h-5 border-2 rounded-full flex items-center justify-center',
-                    formData.plan === 'free' ? 'border-primary bg-primary' : 'border-muted-foreground'
-                  )}>
-                    {formData.plan === 'free' && <Check className="w-3 h-3 text-primary-foreground" />}
-                  </div>
-                </div>
-                <p className="text-2xl font-serif mb-4">£0</p>
-                <ul className="space-y-2">
-                  {planFeatures.free.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Check className="w-4 h-4 text-primary" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </button>
-
-              {/* Active Plan */}
-              <button
-                onClick={() => handleInputChange('plan', 'active')}
-                className={cn(
-                  'p-6 border text-left transition-colors relative',
-                  formData.plan === 'active'
-                    ? 'bg-primary/5 border-primary'
-                    : 'bg-card border-border hover:border-primary/50'
-                )}
-              >
-                <div className="absolute -top-3 left-4 bg-primary text-primary-foreground text-xs px-2 py-1 font-medium">
-                  3 MONTHS FREE
-                </div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-serif text-xl">Activate</h3>
-                  <div className={cn(
-                    'w-5 h-5 border-2 rounded-full flex items-center justify-center',
-                    formData.plan === 'active' ? 'border-primary bg-primary' : 'border-muted-foreground'
-                  )}>
-                    {formData.plan === 'active' && <Check className="w-3 h-3 text-primary-foreground" />}
-                  </div>
-                </div>
-                <p className="text-2xl font-serif mb-4">
-                  £49<span className="text-sm text-muted-foreground">/month</span>
-                </p>
-                <ul className="space-y-2">
-                  {planFeatures.active.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Check className="w-4 h-4 text-primary" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </button>
-            </div>
-
-            <div className="flex gap-4">
-              <Button
-                variant="outline"
-                onClick={() => setStep(2)}
-                className="flex-1 border-border py-6"
-              >
-                Back
-              </Button>
-              <Button
-                onClick={handleSubmit}
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 rounded-none py-6"
-              >
-                Complete Registration
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {/* Step 4: Success */}
-        {step === 4 && (
-          <div className="text-center space-y-8 py-12">
-            <div className="w-20 h-20 mx-auto bg-success/20 rounded-full flex items-center justify-center">
-              <Check className="w-10 h-10 text-success" />
-            </div>
-
-            <div>
-              <h2 className="font-serif text-3xl mb-2">Welcome to Mansa!</h2>
-              <p className="text-muted-foreground max-w-md mx-auto">
-                Your application has been submitted. We&apos;ll review your details and send your QR code pack within 24 hours.
-              </p>
-            </div>
-
-            <div className="bg-card border border-border p-6 max-w-sm mx-auto">
-              <h3 className="font-serif text-xl mb-2">{formData.restaurantName}</h3>
-              <p className="text-primary">{formData.cuisineType}</p>
-              <p className="text-sm text-muted-foreground mt-2">{formData.address}</p>
-            </div>
-
+      {/* Founding Partner Offer */}
+      <section className="py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-card border-2 border-primary p-8 md:p-10">
+            <h2 className="font-serif text-3xl md:text-4xl mb-4">Founding Partner Offer</h2>
+            <p className="text-lg text-foreground/80 mb-4">
+              The first 20 restaurants to activate get 3 months free. <span className="text-primary font-medium">Seven spots remaining.</span>
+            </p>
+            <p className="text-muted-foreground mb-6">
+              Founding Partners receive a permanent badge on their Mansa profile and priority placement at Mansa food festival events.
+            </p>
             <Button
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 py-6"
             >
-              <Link href="/">Return to home</Link>
+              <a href="#join-form">
+                Claim your spot
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
             </Button>
           </div>
-        )}
-      </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="py-20 px-6 bg-card">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-serif text-4xl text-center mb-16">How it works</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="relative">
+              <div className="font-mono text-primary/30 text-sm mb-4">01</div>
+              <h3 className="font-serif text-2xl mb-3">Submit your details</h3>
+              <p className="text-muted-foreground">
+                Tell us about your restaurant and the heritage behind your food. Takes 5 minutes.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="font-mono text-primary/30 text-sm mb-4">02</div>
+              <h3 className="font-serif text-2xl mb-3">Receive your QR code</h3>
+              <p className="text-muted-foreground">
+                We send you a printable QR pack. Customers scan to earn Points after paying.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="font-mono text-primary/30 text-sm mb-4">03</div>
+              <h3 className="font-serif text-2xl mb-3">Watch your community grow</h3>
+              <p className="text-muted-foreground">
+                Track earnings, redemptions, and new customers in your dashboard.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Owned Badge Explainer */}
+      <section className="py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-serif text-3xl md:text-4xl mb-6">
+            Celebrating ownership, not gatekeeping.
+          </h2>
+          <p className="text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
+            Mansa doesn&apos;t restrict who can join. But we do celebrate authenticity. When your restaurant is Caribbean Owned, Ethiopian Owned, or Barbadian Owned — we say so. Subtly. Powerfully. Because your community deserves to know.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <span className="bg-primary/10 text-primary px-4 py-2 text-sm font-medium">
+              Barbadian Owned
+            </span>
+            <span className="bg-primary/10 text-primary px-4 py-2 text-sm font-medium">
+              Ethiopian Owned
+            </span>
+            <span className="bg-primary/10 text-primary px-4 py-2 text-sm font-medium">
+              Jamaican Owned
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Onboarding Form */}
+      <section id="join-form" className="py-20 px-6 bg-card">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="font-serif text-3xl md:text-4xl text-center mb-10">Join Mansa</h2>
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium mb-2">Restaurant Name</label>
+              <input
+                type="text"
+                required
+                value={formData.restaurantName}
+                onChange={(e) => handleInputChange('restaurantName', e.target.value)}
+                className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Cuisine Type</label>
+              <select
+                required
+                value={formData.cuisineType}
+                onChange={(e) => handleInputChange('cuisineType', e.target.value)}
+                className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              >
+                <option value="">Select cuisine type</option>
+                {cuisineOptions.map((cuisine) => (
+                  <option key={cuisine} value={cuisine}>{cuisine}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Owner Name</label>
+              <input
+                type="text"
+                required
+                value={formData.ownerName}
+                onChange={(e) => handleInputChange('ownerName', e.target.value)}
+                className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Email</label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
+                className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Heritage Statement</label>
+              <textarea
+                value={formData.heritageStatement}
+                onChange={(e) => handleInputChange('heritageStatement', e.target.value)}
+                placeholder="Tell us the story behind your food..."
+                rows={4}
+                className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Owned Badge (optional)</label>
+              <select
+                value={formData.ownedBadge}
+                onChange={(e) => handleInputChange('ownedBadge', e.target.value)}
+                className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              >
+                <option value="">Select your heritage</option>
+                {heritageOptions.map((heritage) => (
+                  <option key={heritage} value={heritage}>{heritage}</option>
+                ))}
+              </select>
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-none py-6 text-lg"
+            >
+              Join Mansa
+            </Button>
+
+            <p className="text-center text-sm text-muted-foreground">
+              Free to list. £49/month to activate loyalty features. No transaction fees.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 border-t-2 border-primary">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="font-serif text-2xl text-primary">Mansa</h3>
+            <p className="text-muted-foreground italic text-sm">Where culture earns.</p>
+          </div>
+          <nav className="flex items-center gap-6 text-sm">
+            <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
+              Home
+            </Link>
+            <Link href="/events" className="text-muted-foreground hover:text-foreground transition-colors">
+              Events
+            </Link>
+            <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
+              Contact
+            </Link>
+          </nav>
+        </div>
+        <div className="max-w-4xl mx-auto mt-8 pt-6 border-t border-border text-center text-sm text-muted-foreground">
+          © 2026 Mansa. East London.
+        </div>
+      </footer>
     </main>
   )
 }
