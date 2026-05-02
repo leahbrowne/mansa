@@ -2,36 +2,36 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { MapPin, QrCode, Gift, Check, ArrowRight, Users } from 'lucide-react'
+import { MapPin, QrCode, Gift, Check, ArrowRight, Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const cuisines = [
-  { name: 'West African', color: 'bg-amber-600/65', image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=600&q=80' },
-  { name: 'Caribbean', color: 'bg-orange-600/65', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80' },
-  { name: 'South Asian', color: 'bg-yellow-600/65', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80' },
-  { name: 'East Asian', color: 'bg-red-600/65', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80' },
-  { name: 'Ethiopian', color: 'bg-amber-700/65', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80' },
-  { name: 'Levantine', color: 'bg-emerald-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
-  { name: 'Indo-Caribbean', color: 'bg-rose-600/65', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80' },
-  { name: 'Persian', color: 'bg-teal-600/65', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80' },
-  { name: 'More Cuisines', color: 'bg-neutral-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
+  { name: 'West African', emoji: '🍲', color: 'bg-amber-600/65', image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=600&q=80' },
+  { name: 'Caribbean', emoji: '🥘', color: 'bg-orange-600/65', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80' },
+  { name: 'South Asian', emoji: '🍛', color: 'bg-yellow-600/65', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80' },
+  { name: 'East Asian', emoji: '🥢', color: 'bg-red-600/65', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80' },
+  { name: 'Ethiopian', emoji: '🫓', color: 'bg-amber-700/65', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80' },
+  { name: 'Levantine', emoji: '🧆', color: 'bg-emerald-700/65', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
+  { name: 'Indo-Caribbean', emoji: '🍜', color: 'bg-rose-600/65', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80' },
+  { name: 'Persian', emoji: '🍚', color: 'bg-teal-600/65', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80' },
+  { name: 'North African', emoji: '🥗', color: 'bg-orange-700/65', image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=600&q=80' },
 ]
 
 const steps = [
   {
-    icon: QrCode,
-    title: 'Eat & Earn',
-    description: 'Scan after every meal to earn Points instantly. The more you eat, the more you earn.',
+    icon: Search,
+    title: 'Discover',
+    description: 'Find Mansa Certified authentic restaurants near you.',
   },
   {
-    icon: Users,
-    title: 'Refer & Authenticate',
-    description: "Recommend friends or verify a restaurant's heritage. Earn bonus Points both ways.",
+    icon: QrCode,
+    title: 'Eat & Scan',
+    description: 'Scan the QR code after paying to earn Mansas.',
   },
   {
     icon: Gift,
     title: 'Redeem',
-    description: 'Spend your Points at any restaurant in the Mansa ecosystem. Your loyalty travels with you.',
+    description: 'Spend your Mansas at any restaurant in the ecosystem.',
   },
 ]
 
@@ -44,6 +44,34 @@ const benefits = [
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-background">
+      {/* Header Navigation */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="font-serif text-2xl text-primary">Mansa</Link>
+          
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="/events" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Events
+            </Link>
+            <Link href="/partners" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Partners
+            </Link>
+            <Link 
+              href="/demo-consumer" 
+              className="text-sm text-primary border border-primary/50 px-4 py-1.5 hover:bg-primary/10 transition-colors"
+            >
+              Consumer Demo
+            </Link>
+            <Link 
+              href="/demo-restaurant" 
+              className="text-sm text-primary border border-primary/50 px-4 py-1.5 hover:bg-primary/10 transition-colors"
+            >
+              Restaurant Demo
+            </Link>
+          </nav>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -68,12 +96,12 @@ export default function LandingPage() {
           {/* Headline */}
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold mb-6 leading-tight text-balance">
             <span className="block">Eat real food.</span>
-            <span className="block text-primary">Earn Points.</span>
+            <span className="block">Earn <span className="text-primary">Mansas.</span></span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10 text-pretty">
-            Discover authentic ethnic restaurants near you. Earn rewards every time you eat.
+            Discover authentic restaurants. Earn rewards every time you eat.
           </p>
 
           {/* CTAs */}
@@ -103,11 +131,11 @@ export default function LandingPage() {
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-primary" />
-              Every cuisine
+              500+ dishes
             </span>
             <span className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
-              Now available worldwide
+              East London first
             </span>
           </div>
         </div>
@@ -124,7 +152,7 @@ export default function LandingPage() {
       <section className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <h2 className="font-serif text-4xl md:text-5xl text-center mb-16">
-            Three ways to earn Points.
+            How it works
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -184,7 +212,12 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 
                 {/* Content */}
-                <div className="relative h-full p-5 flex flex-col justify-end">
+                <div className="relative h-full p-5 flex flex-col justify-between">
+                  {/* Emoji top left */}
+                  <span className="text-3xl drop-shadow-lg" role="img" aria-label={cuisine.name}>
+                    {cuisine.emoji}
+                  </span>
+                  
                   {/* Name bottom left */}
                   <span className="font-serif italic text-lg md:text-xl text-white drop-shadow-md">
                     {cuisine.name}
@@ -282,6 +315,9 @@ export default function LandingPage() {
               <Link href="/partners" className="text-muted-foreground hover:text-foreground transition-colors">
                 Partners
               </Link>
+              <Link href="/events" className="text-muted-foreground hover:text-foreground transition-colors">
+                Events
+              </Link>
               <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
                 Contact
               </Link>
@@ -289,7 +325,7 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            © 2026 Mansa. East London.
+            Mansa. Launching East London 2026.
           </div>
         </div>
       </footer>
