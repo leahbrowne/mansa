@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -37,11 +38,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className="font-sans antialiased min-h-screen bg-background text-foreground">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="bg-background">
+        <body className="font-sans antialiased min-h-screen bg-background text-foreground">
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
